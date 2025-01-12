@@ -1,10 +1,9 @@
 package com.github.ajharry69.kyosktest.books;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/books")
@@ -18,5 +17,10 @@ class BookController {
     @GetMapping
     List<Book> findAll() {
         return bookRepository.findAll();
+    }
+
+    @PostMapping
+    Book save(@RequestBody BookRequest book) {
+        return bookRepository.save(new Book(UUID.randomUUID().toString(), book.title()));
     }
 }
