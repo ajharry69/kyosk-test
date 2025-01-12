@@ -21,4 +21,4 @@ spec:
     capacity: # not useful for a hostPath
         storage: 1Gi
     hostPath:
-        path: "/mnt/kyosk-mongo/"
+        path: /mnt/data
