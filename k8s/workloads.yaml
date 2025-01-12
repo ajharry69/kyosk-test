@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/ajharry69/kyosk-test:v1.0.0
+          image: ghcr.io/ajharry69/kyosk-test:v1.1.0
           env:
             - name: SPRING_DATA_MONGODB_HOST
               value: "kyosk-mongodb.default.svc.cluster.local"
