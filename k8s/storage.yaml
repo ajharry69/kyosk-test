@@ -8,7 +8,7 @@ spec:
         - ReadWriteOnce
     resources:
         requests:
-            storage: 5Gi
+            storage: 1Gi
 ---
 apiVersion: v1
 kind: PersistentVolume # specifies "How do we want it implemented?"
@@ -19,6 +19,6 @@ spec:
     accessModes:
         - ReadWriteOnce
     capacity: # not useful for a hostPath
-        storage: 5Gi
+        storage: 1Gi
     hostPath:
         path: "/mnt/kyosk-mongo/"
