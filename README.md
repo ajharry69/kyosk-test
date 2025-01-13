@@ -30,31 +30,6 @@ Mongo DB will automatically be pulled and started before the application is full
 ./gradlew bootRun
 ```
 
-#### Accessing the API
-
-##### Using browser
-
-1. Open your favorite web browser.
-2. Visit `http://localhost:8080/books` in a new browser tab.
-
-##### Using curl
-
-###### What you will need
-
-1. [Install curl][install-curl-url].
-
-###### Access the application
-
-Show a list of prepopulated books.
-
-```bash
-curl --request "GET" \
-      --header "Accept: application/json" \
-      --url 'http://localhost:8080/books'
-```
-
-![Link to Screenshot](screenshots/curl-output-localhost-8080.png)
-
 ### Using Kubernetes (k8s)
 
 #### What you will need
@@ -84,42 +59,50 @@ kubectl apply --filename k8s/
 
 The following command assumes that [Apply k8s manifests](#apply-k8s-manifests) phase is done successfully.
 
+> **N/B:** this is optional, but can be helpful in debugging when things are not working as expected.
+
 ```bash
 kubectl get all
 ```
 
 ![Link to Screenshot](screenshots/kubectl-get-all.png)
 
-#### Accessing the API
+#### Start port-forwarding
 
-The following commands assume that [Building & Running](#building-and-running) phase is done successfully.
-
-##### Getting minikube IP
+This assumes port **8080** is not in use.
 
 ```bash
-minikube ip
+kubectl port-forward services/kyosk-backend 8080:8080
 ```
 
-![Link to Screenshot](screenshots/minikube-ip.png)
+![Link to Screenshot](screenshots/port-forwarding.png)
 
-##### Using browser
+## Accessing the API
+
+### Using browser
 
 1. Open your favorite web browser.
-2. Visit `http://$(minikube ip):30100/books` in a new browser tab.
+2. Visit `http://localhost:8080/books` in a new browser tab.
 
-##### Using curl
+![Link to Screenshot](screenshots/browser-output-localhost-8080.png)
 
-###### What you will need
+### Using curl
+
+#### What you will need
 
 1. [Install curl][install-curl-url].
 
-###### Access the application
+#### Access the application
+
+Show a list of prepopulated books.
 
 ```bash
 curl --request "GET" \
       --header "Accept: application/json" \
-      --url 'http://$(minikube ip):30100/books'
+      --url 'http://localhost:8080/books'
 ```
+
+![Link to Screenshot](screenshots/curl-output-localhost-8080.png)
 
 ## CI/CD
 
