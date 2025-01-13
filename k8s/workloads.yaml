@@ -27,17 +27,11 @@ spec:
                   key: database.dbname
             - name: SPRING_DATA_MONGODB_USERNAME
               valueFrom:
-#                secretKeyRef:
-#                  name: database-credentials
-#                  key: database-username
-                configMapKeyRef:
-                  name: database-config
-                  key: database.username
+                secretKeyRef:
+                  name: database-credentials
+                  key: database-username
             - name: SPRING_DATA_MONGODB_PASSWORD
               valueFrom:
-#                secretKeyRef:
-#                  name: database-credentials
-#                  key: database-password
-                configMapKeyRef:
-                  name: database-config
-                  key: database.password
+                secretKeyRef:
+                  name: database-credentials
+                  key: database-password
