@@ -4,6 +4,18 @@
 
 A simple spring boot application that provides an API endpoint for listing books.
 
+## Technologies Stack
+
+| Technology       | Version                             | Description                                                                                   |
+|------------------|-------------------------------------|-----------------------------------------------------------------------------------------------|
+| JAVA             | 21                                  | backend programming language                                                                  |
+| Spring boot      | 3.4.1                               | backend framework                                                                             |
+| MongoDB          | 8.0                                 | NoSQL document database                                                                       |
+| Docker (Engine)  | 27.2.1                              | Containerisation                                                                              |
+| Kubernetes (k8s) |                                     | Container orchestration                                                                       |
+| Kubectl          | v1.27.3 (server) & v1.31.4 (client) | Command line tool for interacting with kubernetes APIs                                        |
+| Minikube         | v1.31.1                             | allow running single-node kubernetes cluster on personal computer for development and testing |
+
 ## Building and Running
 
 ### Using (Plain) Docker
