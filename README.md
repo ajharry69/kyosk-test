@@ -76,6 +76,10 @@ Mongo DB will automatically be pulled and started before the application is full
 
 ### Using Kubernetes (k8s)
 
+#### Source code
+
+Please check the [k8s](k8s) directory for the kubernetes manifest (`.yaml` files).
+
 #### What you will need
 
 1. [Install docker][docker-installation-url].
@@ -151,6 +155,10 @@ curl --request "GET" \
 ## CI/CD
 
 Continuous Integration (CI) & Continuous Deployment (CD) pipeline is running on GitHub Actions.
+
+### Source code
+
+[.github/workflows/ci-cd.yml](.github/workflows/ci-cd.yml)
 
 ### How it works
 
