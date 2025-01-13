@@ -193,12 +193,10 @@ git push --tags
 This will automatically trigger the docker image building and pushing to GitHub container registry upon successful
 execution of the **CI** job.
 
-## DISCLAIMER
-
-The provided guidelines were tested on an ubuntu 24.04 machine with the following versions of prerequisite software
-programs:
-
-![Link to Screenshot](screenshots/software-versions.png)
+> We've chosen **GitHub Container Registry** to avoid managing separate authentication secrets for our container
+> registry.
+> Since our code, CI/CD pipelines, and container images all reside on GitHub, authentication is handled
+> seamlessly within the platform.
 
 [install-curl-url]: https://curl.se/download.html
 
