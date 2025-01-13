@@ -10,17 +10,48 @@ A simple spring boot application that provides an API endpoint for listing books
 
 1. [Install docker][docker-installation-url].
 
-#### Build the docker image
+#### Start mongo DB
+
+The following command assumes:
+
+1. ports **27017** and **8081** are not in use.
+2. the command is running on a [Unix-based system](https://en.wikipedia.org/wiki/List_of_Unix_systems).
+
+#### Start the application
+
+The application
+has [Spring boot docker compose integration](https://docs.spring.io/spring-boot/how-to/docker-compose.html) for faster
+development.
+Mongo DB will automatically be pulled and started before the application is fully started.
 
 ```bash
-docker build --tag ghcr.io/ajharry69/kyosk-test .
+./gradlew bootRun
 ```
 
-#### Start the container
+#### Accessing the API
+
+##### Using browser
+
+1. Open your favorite web browser.
+2. Visit `http://localhost:8080/books` in a new browser tab.
+
+##### Using curl
+
+###### What you will need
+
+1. [Install curl][install-curl-url].
+
+###### Access the application
+
+Show a list of prepopulated books.
 
 ```bash
-docker run --rm --publish 8080:8080 ghcr.io/ajharry69/kyosk-test
+curl --request "GET" \
+      --header "Accept: application/json" \
+      --url 'http://localhost:8080/books'
 ```
+
+![Link to Screenshot](screenshots/curl-output-localhost-8080.png)
 
 ### Using Kubernetes (k8s)
 
@@ -47,27 +78,54 @@ The following command assumes that [Start minikube](#start-minikube) phase is do
 kubectl apply --filename k8s/
 ```
 
-## Accessing the API
+#### Get information on the k8s resources
+
+The following command assumes that [Apply k8s manifests](#apply-k8s-manifests) phase is done successfully.
+
+```bash
+kubectl get all
+```
+
+![Link to Screenshot](screenshots/kubectl-get-all.png)
+
+#### Accessing the API
 
 The following commands assume that [Building & Running](#building-and-running) phase is done successfully.
 
-### Using browser
+##### Getting minikube IP
+
+```bash
+minikube ip
+```
+
+![Link to Screenshot](screenshots/minikube-ip.png)
+
+##### Using browser
 
 1. Open your favorite web browser.
-2. Visit http://localhost:8080/books in a new browser tab.
+2. Visit `http://$(minikube ip):30100/books` in a new browser tab.
 
-### Using curl
+##### Using curl
 
-#### What you will need
+###### What you will need
 
-1. [Install curl](https://curl.se/download.html).
+1. [Install curl][install-curl-url].
 
-#### Access the application
+###### Access the application
 
 ```bash
 curl --request "GET" \
       --header "Accept: application/json" \
-      --url 'http://localhost:8080/books'
+      --url 'http://$(minikube ip):30100/books'
 ```
+
+## DISCLAIMER
+
+The provided guidelines were tested on an ubuntu 24.04 machine with the following versions of prerequisite software
+programs:
+
+![Link to Screenshot](screenshots/software-versions.png)
+
+[install-curl-url]: https://curl.se/download.html
 
 [docker-installation-url]: https://docs.docker.com/engine/install/
