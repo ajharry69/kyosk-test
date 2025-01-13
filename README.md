@@ -182,6 +182,9 @@ and pushed to GitHub as follows:
 git push --tags
 ```
 
+This will automatically trigger the docker image building and pushing to GitHub container registry upon successful
+execution of the **CI** job.
+
 ## DISCLAIMER
 
 The provided guidelines were tested on an ubuntu 24.04 machine with the following versions of prerequisite software
