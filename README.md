@@ -16,6 +16,38 @@ A simple spring boot application that provides an API endpoint for listing books
 | Kubectl          | v1.27.3 (server) & v1.31.4 (client) | Command line tool for interacting with kubernetes APIs                                        |
 | Minikube         | v1.31.1                             | allow running single-node kubernetes cluster on personal computer for development and testing |
 
+## Building and Pushing The Docker Image
+
+The following instructions outline how to **manually** build and push the docker image to GitHub Container registry.
+
+> **N/B:** The automatic way of achieving the same is outlined in the [CI/CD section](#cicd).
+
+### What you will need
+
+1. [Install docker][docker-installation-url].
+
+### Build the docker image
+
+```bash
+docker build --tag ghcr.io/<your-github-username>/kyosk-test:v1 .
+```
+
+### Authenticate GitHub Container Registry
+
+Please
+check [here](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-with-a-personal-access-token-classic)
+for information on where to get the password.
+
+```bash
+docker login ghcr.io --username <your-github-username> --password-stdin
+```
+
+### Push the docker image
+
+```bash
+docker image push ghcr.io/<your-github-username>/kyosk-test:v1
+```
+
 ## Building and Running
 
 ### Using (Plain) Docker
